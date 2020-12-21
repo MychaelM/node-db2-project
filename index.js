@@ -1,6 +1,7 @@
 const express = require('express')
 const helmet = require('helmet')
 const welcomeRouter = require('./welcome/welcome-router')
+const carsRouter = require('./cars/cars-routers')
 
 const server = express()
 const port = process.env.PORT || 8080
@@ -9,6 +10,7 @@ server.use(helmet())
 server.use(express.json())
 
 server.use(welcomeRouter)
+server.use('/cars', carsRouter)
 
 server.use((err, req, res, next) => {
   console.log(err)
